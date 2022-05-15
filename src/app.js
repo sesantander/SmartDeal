@@ -40,13 +40,27 @@ App = {
   },
   loadContract: async () => {
     // Obtenemos una el smart contract 
-    const contract = await $.getJSON('Contract.json')
+    const contract = await $.getJSON('ContractSC.json')
+    const proposalContract = await $.getJSON('ProposalSC.json')
+    const transactionContract = await $.getJSON('TransactionSC.json')
+    const invoiceContract = await $.getJSON('InvoiceSC.json')
+
     App.contracts.Contract = TruffleContract(contract)
+    App.contracts.ProposalContract = TruffleContract(proposalContract)
+    App.contracts.TransactionContract = TruffleContract(transactionContract)
+    App.contracts.InvoiceContract = TruffleContract(invoiceContract)
+
     web3.eth.defaultAccount = web3.eth.accounts[0];
+
     App.contracts.Contract.setProvider(App.web3Provider)
-    console.log('ola')
+    App.contracts.ProposalContract.setProvider(App.web3Provider)
+    App.contracts.TransactionContract.setProvider(App.web3Provider)
+    App.contracts.InvoiceContract.setProvider(App.web3Provider)
+
     App.contract = await App.contracts.Contract.deployed()
-    console.log('LOG ~ loadContract: ~ App.todoList', App.contract)
+    App.ProposalContract = await App.contracts.ProposalContract.deployed()
+    App.TransactionContract = await App.contracts.TransactionContract.deployed()
+    App.InvoiceContract = await App.contracts.InvoiceContract.deployed()
   },
   
   render: async () => {
@@ -68,8 +82,23 @@ App = {
   renderTasks: async () => {
     // Llamamos la variable taskCount del smart contract que va a tener el total de tareas
     const taskCount = await App.contract.contractCount()
+    const proposalCount = await App.ProposalContract.proposalCount()
+    const transactionCount = await App.TransactionContract.transactionCount()
+    const invoiceCount = await App.InvoiceContract.invoiceCount()
     const $taskTemplate = $('.taskTemplate')
 
+for (var i = 1; i <= proposalCount; i++) {
+      const propo = await App.ProposalContract.proposals(i);
+      console.log('LOG ~ renderTasks: ~ PROPOSALS', propo)
+}
+for (var i = 1; i <= transactionCount; i++) {
+      const xd = await App.TransactionContract.transactions(i);
+      console.log('LOG ~ renderTasks: ~ Transactions', xd)
+}
+for (var i = 1; i <= invoiceCount; i++) {
+      const xd = await App.InvoiceContract.invoices(i);
+      console.log('LOG ~ renderTasks: ~ Invoices', xd)
+}
     for (var i = 1; i <= taskCount; i++) {
       // Obtenemos el array de tareas del smart contract
       const task = await App.contract.contracts(i)

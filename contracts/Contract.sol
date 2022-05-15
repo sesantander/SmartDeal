@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
-contract Contract {
+contract ContractSC {
     uint256 public contractCount = 0;
 
     struct Contract {
@@ -175,12 +175,11 @@ contract Contract {
         );
     }
 
-    // funcion para para marcar como completa una tarea
     // function markCompleted(uint256 _id) public {
-    //   Contract memory _task = tasks[_id];
-    //   _task.completed = !_task.completed;
-    //   tasks[_id] = _task;
-    //   emit ContractCompleted(_id, _task.completed);
+    //     Contract memory _task = tasks[_id];
+    //     _task.completed = !_task.completed;
+    //     tasks[_id] = _task;
+    //     emit ContractCompleted(_id, _task.completed);
     // }
 
     // funcion para enviar ether del contrato hacia una direccion
@@ -189,10 +188,9 @@ contract Contract {
     //   recipient.transfer(money);
     // }
 
-    // funcion para obtener el valor de la recompensa de cada task
-    // function getTaskReward(uint256 _id) external view returns(uint){
-    //   Task memory _task = tasks[_id];
-    //   return _task.reward;
+    // function getContract(uint256 _id) external view returns(){
+    //   Contract memory _contract = contracts[_id];
+    //   return _contract;
     // }
 
     // funcion para depositar ether en el smart contract
