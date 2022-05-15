@@ -3757,14 +3757,58 @@
   },
   "networks": {
     "5777": {
-      "events": {},
+      "events": {
+        "0xb4faaf5a8f770dd90616161a9159b6749b0fd3b8ecd20c226426c727b0b1afd0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "transaction_id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "withdrawal_date",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "estimated_arrival",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "method",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "int256"
+            },
+            {
+              "indexed": false,
+              "name": "contract_id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "status",
+              "type": "string"
+            }
+          ],
+          "name": "TransactionCreated",
+          "type": "event",
+          "signature": "0xb4faaf5a8f770dd90616161a9159b6749b0fd3b8ecd20c226426c727b0b1afd0"
+        }
+      },
       "links": {},
-      "address": "0x4Cf56E4F90e29052030cb936F403EfcD5183246c",
-      "transactionHash": "0xf4f1e907a70018be69ec512b39ef45312a423fb17498eb329b1e3c54f416efb2"
+      "address": "0x6E5F777Cc90a1552E53C30A27d512BBb6e3fD077",
+      "transactionHash": "0x07f70dd0caf9119fb80c7d2602cec54003338e34f865f648a66bc26ed6c8a48d"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2022-05-15T16:48:49.500Z",
+  "updatedAt": "2022-05-15T19:55:27.737Z",
   "devdoc": {
     "methods": {}
   },

@@ -26,7 +26,7 @@ contract ContractSC {
         uint256 proposal_id;
     }
 
-    event ContractCompleted(uint256 contract_id);
+    event ChangedContractStatus(uint256 contract_id, string status);
 
     mapping(uint256 => Contract) public contracts;
     mapping(uint256 => ContractDetails) public contracts_details;
@@ -175,23 +175,20 @@ contract ContractSC {
         );
     }
 
-    // function markCompleted(uint256 _id) public {
-    //     Contract memory _task = tasks[_id];
-    //     _task.completed = !_task.completed;
-    //     tasks[_id] = _task;
-    //     emit ContractCompleted(_id, _task.completed);
-    // }
+     function setContractStatus(uint256 _id, string memory status) public {
+        Contract memory _contract = contracts[_id];
+        _contract.status = status;
+        contracts[_id] = _contract;
+        emit ChangedContractStatus(_id, _contract.status);
+    }   
 
-    // funcion para enviar ether del contrato hacia una direccion
-    // function sendEther(address payable recipient, uint reward) external {
-    //   uint money = reward * 1 ether;
-    //   recipient.transfer(money);
-    // }
+    function getContract(uint index) public view returns(string memory, string memory, string memory, string memory, string memory, string memory, string memory) {
+        return (contracts[index].contract_type, contracts[index].contract_name, contracts[index].job_title,  contracts[index].status, contracts[index].scope_of_work, contracts[index].start_date, contracts[index].end_date);
+    }
 
-    // function getContract(uint256 _id) external view returns(){
-    //   Contract memory _contract = contracts[_id];
-    //   return _contract;
-    // }
+    function getContractDetails(uint index) public view returns(string memory, int256, string memory, string memory, uint256, uint256, uint256) {
+        return (contracts_details[index].currency, contracts_details[index].payment_rate, contracts_details[index].payment_frequency,  contracts_details[index].payment_due, contracts_details[index].employer_id, contracts_details[index].contractor_id, contracts_details[index].proposal_id);
+    }
 
     // funcion para depositar ether en el smart contract
     function() external payable {}

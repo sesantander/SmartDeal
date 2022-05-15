@@ -4503,14 +4503,68 @@
   },
   "networks": {
     "5777": {
-      "events": {},
+      "events": {
+        "0x3f96052d4413578c84b05801ecd54c3bf6a4ae18f249d5008dd9ff222ef15ce3": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "invoice_id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "bill_from",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "bill_to",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "status",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "due_date",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "paid_date",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "description",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "int256"
+            },
+            {
+              "indexed": false,
+              "name": "transaction_id",
+              "type": "uint256"
+            }
+          ],
+          "name": "InvoiceCreated",
+          "type": "event",
+          "signature": "0x3f96052d4413578c84b05801ecd54c3bf6a4ae18f249d5008dd9ff222ef15ce3"
+        }
+      },
       "links": {},
-      "address": "0x19767fD46cAFF9661f3D064EA9599398bB269e5E",
-      "transactionHash": "0x7b1edab51c64d482d1a18eadbed3a30beb1300fb8122b9e3fa0a5f4bdfe65b3e"
+      "address": "0x2A5B3b3F556bf319230a6E63BFee37D0b50Cdf1D",
+      "transactionHash": "0x03f854fcb1b0511398d3f64e425ee6add966f0c4422a57b58e2ba87b2bb8d3b9"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2022-05-15T16:48:49.498Z",
+  "updatedAt": "2022-05-15T19:55:27.740Z",
   "devdoc": {
     "methods": {}
   },

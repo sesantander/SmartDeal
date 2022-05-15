@@ -87,6 +87,15 @@ App = {
     const invoiceCount = await App.InvoiceContract.invoiceCount()
     const $taskTemplate = $('.taskTemplate')
 
+
+const newStatus = await App.contract.setContractStatus(1,"TESTSTATUS");
+     console.log('LOG ~ renderTasks: ~ newStatus', newStatus)
+
+
+     const getCpmtract = await App.contract.getContract(1);
+     console.log('LOG ~ renderTasks: ~ getCpmtract', getCpmtract[1])
+
+
 for (var i = 1; i <= proposalCount; i++) {
       const propo = await App.ProposalContract.proposals(i);
       console.log('LOG ~ renderTasks: ~ PROPOSALS', propo)
