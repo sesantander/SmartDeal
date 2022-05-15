@@ -81,7 +81,7 @@ App = {
       const taskId = task[0].toNumber()
       const taskContent = task[1]
       const taskCompleted = task[2]
-      const taskReward = task[3]
+      const taskReward = task2[2].toNumber()
 
       // Llenamos el html con la informacion de cada tarea
       const $newTaskTemplate = $taskTemplate.clone()
@@ -119,8 +119,11 @@ App = {
     App.setLoading(true)
     const content = $('#newTask').val()
     const rewardValue = $('#reward').val()
+
     // Una vez obtenidos los valores ingresados por el usuario creamos la tarea con el metodo de el smart contract
-    await App.contract.createTask(content,rewardValue)
+    await App.contract.createContract("Termino indefinido", "Test Contract 2", "Frontend Developer", "Disagree","5 buttons","13/05/2022","20/05/2022")
+    await App.contract.createContractDetails("USD", 1333, "Monthly", "30", 1, 1, 1)
+
     window.location.reload()
   },
 
