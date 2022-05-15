@@ -121,8 +121,7 @@ App = {
     const rewardValue = $('#reward').val()
 
     // Una vez obtenidos los valores ingresados por el usuario creamos la tarea con el metodo de el smart contract
-    await App.contract.createContract("Termino indefinido", "Test Contract 2", "Frontend Developer", "Disagree","5 buttons","13/05/2022","20/05/2022")
-    await App.contract.createContractDetails("USD", 1333, "Monthly", "30", 1, 1, 1)
+    await App.contract.createContract("Termino indefinido", "Test Contract 2", "Frontend Developer", "Disagree","5 buttons","13/05/2022","20/05/2022","USD", 1333, "Monthly", "30", 1, 1, 1)
 
     window.location.reload()
   },
