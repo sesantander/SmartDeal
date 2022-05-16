@@ -7,13 +7,13 @@ contract ProposalSC {
     struct Proposal {
         uint256 proposal_id;
         int256 payment_rate;
-        string currency;
-        string description;
         string scope_of_work;
         string payment_frequency;
-        string status;
         uint256 employer_id;
         uint256 contractor_id;
+        string start_date;
+        string end_date;
+        string contract_type;
     }
 
     // event ProposalStatus(uint256 contract_id);
@@ -23,62 +23,62 @@ contract ProposalSC {
     event ProposalCreated(
         uint256 proposal_id,
         int256 payment_rate,
-        string currency,
-        string description,
         string scope_of_work,
         string payment_frequency,
-        string status,
         uint256 employer_id,
-        uint256 contractor_id
+        uint256 contractor_id,
+        string start_date,
+        string end_date,
+        string contract_type
     );
 
     constructor() public {
         createProposal(
             2000,
-            "USD",
-            "Description",
             "3 endpoints",
             "Monthly",
-            "Waiting response",
             1,
-            1
+            1,
+            "22/05/2022",
+            "23/05/2022",
+            "Fixed Rate"
         );
     }
 
     function createProposal(
         int256 payment_rate,
-        string memory currency,
-        string memory description,
         string memory scope_of_work,
         string memory payment_frequency,
-        string memory status,
         uint256 employer_id,
-        uint256 contractor_id
+        uint256 contractor_id,
+        string memory start_date,
+        string memory end_date,
+        string memory contract_type
     ) public {
         proposalCount++;
         Proposal memory proposalInfo;
 
         proposalInfo.proposal_id = proposalCount;
         proposalInfo.payment_rate = payment_rate;
-        proposalInfo.currency = currency;
-        proposalInfo.description = description;
         proposalInfo.scope_of_work = scope_of_work;
         proposalInfo.payment_frequency = payment_frequency;
-        proposalInfo.status = status;
         proposalInfo.employer_id = employer_id;
         proposalInfo.contractor_id = contractor_id;
+        proposalInfo.start_date = start_date;
+        proposalInfo.end_date = end_date;
+        proposalInfo.contract_type = contract_type;
 
         proposals[proposalCount] = proposalInfo;
         emit ProposalCreated(
             proposalCount,
             payment_rate,
-            currency,
-            description,
             scope_of_work,
             payment_frequency,
-            status,
             employer_id,
-            contractor_id
+            contractor_id,
+            start_date,
+            end_date,
+            contract_type
         );
     }
 
