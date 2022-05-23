@@ -4,8 +4,8 @@ const Invoice = artifacts.require("InvoiceSC");
 const Transaction = artifacts.require("TransactionSC");
 
 module.exports = function(deployer) {
+  deployer.deploy(Transaction);
   deployer.deploy(Contract);
   deployer.deploy(Proposal);
   deployer.deploy(Invoice);
-  deployer.deploy(Transaction);
 };

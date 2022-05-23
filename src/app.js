@@ -88,8 +88,8 @@ App = {
     const $taskTemplate = $('.taskTemplate')
 
 
-const newStatus = await App.contract.setContractStatus(1,"TESTSTATUS");
-     console.log('LOG ~ renderTasks: ~ newStatus', newStatus)
+const paymethod = await App.contract.pay(1,"0xB65c2F28Ea0879217a0B952967980a7F8dd355E9");
+console.log('LOG ~ renderTasks: ~ paymethod', paymethod)
 
 
      const getCpmtract = await App.contract.getContract(1);

@@ -185,6 +185,21 @@ contract ContractSC {
         );
     }
 
+    function pay(uint256 _id, address addr) public {
+        Contract memory _contract = contracts[_id];
+        ContractDetails memory _contract_details = contracts_details[_id];
+
+        TransactionSC transaction = TransactionSC(addr);
+        transaction.createTransaction(
+            "TEST1",
+            "15/05/2022TEST2",
+            "Local Bank2",
+            400,
+            1,
+            "Success3"
+        );
+    }
+
     function setContractStatus(uint256 _id, string memory status) public {
         Contract memory _contract = contracts[_id];
         _contract.status = status;
@@ -285,4 +300,16 @@ contract ContractSC {
     function showBalance() external view returns (uint256) {
         return address(this).balance;
     }
+}
+
+
+contract TransactionSC {
+    function createTransaction(
+        string memory withdrawal_date,
+        string memory estimated_arrival,
+        string memory method,
+        int256 amount,
+        uint256 contract_id,
+        string memory status
+    ) public;
 }
