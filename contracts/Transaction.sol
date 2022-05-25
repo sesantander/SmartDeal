@@ -71,4 +71,8 @@ contract TransactionSC {
     function showBalance() external view returns (uint256) {
         return address(this).balance;
     }
+
+     function getAddress() external view returns (address) {
+        return address(this);
+    }
 }

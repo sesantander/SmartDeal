@@ -86,28 +86,31 @@ App = {
     const transactionCount = await App.TransactionContract.transactionCount()
     const invoiceCount = await App.InvoiceContract.invoiceCount()
     const $taskTemplate = $('.taskTemplate')
+    
+    const transactionAddress = await App.TransactionContract.getAddress();
+    console.log('LOG ~ renderTasks: ~ transactionAddress', transactionAddress)
+
+    const paymethod = await App.contract.pay(1,transactionAddress, "24/05/2022", "24/05/2022");
+    console.log('LOG ~ renderTasks: ~ paymethod', paymethod)
 
 
-const paymethod = await App.contract.pay(1,"0xB65c2F28Ea0879217a0B952967980a7F8dd355E9");
-console.log('LOG ~ renderTasks: ~ paymethod', paymethod)
+    //  const getCpmtract = await App.contract.getContract(1);
+    //  console.log('LOG ~ renderTasks: ~ getCpmtract', getCpmtract[1])
 
 
-     const getCpmtract = await App.contract.getContract(1);
-     console.log('LOG ~ renderTasks: ~ getCpmtract', getCpmtract[1])
-
-
-for (var i = 1; i <= proposalCount; i++) {
-      const propo = await App.ProposalContract.proposals(i);
-      console.log('LOG ~ renderTasks: ~ PROPOSALS', propo)
-}
+// for (var i = 1; i <= proposalCount; i++) {
+//       const propo = await App.ProposalContract.proposals(i);
+//       console.log('LOG ~ renderTasks: ~ PROPOSALS', propo)
+// }
+console.log('LOG ~ renderTasks: ~ transactionCount', transactionCount)
 for (var i = 1; i <= transactionCount; i++) {
       const xd = await App.TransactionContract.transactions(i);
       console.log('LOG ~ renderTasks: ~ Transactions', xd)
 }
-for (var i = 1; i <= invoiceCount; i++) {
-      const xd = await App.InvoiceContract.invoices(i);
-      console.log('LOG ~ renderTasks: ~ Invoices', xd)
-}
+// for (var i = 1; i <= invoiceCount; i++) {
+//       const xd = await App.InvoiceContract.invoices(i);
+//       console.log('LOG ~ renderTasks: ~ Invoices', xd)
+// }
     for (var i = 1; i <= taskCount; i++) {
       // Obtenemos el array de tareas del smart contract
       const task = await App.contract.contracts(i)
