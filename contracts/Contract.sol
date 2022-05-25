@@ -213,6 +213,9 @@ contract ContractSC {
             _id,
             "Paid"
         );
+
+        _contract.status = "ACTIVE";
+        contracts[_id] = _contract;
     }
 
     function setContractStatus(uint256 _id, string memory status) public {
