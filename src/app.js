@@ -83,35 +83,35 @@ App = {
     // Llamamos la variable taskCount del smart contract que va a tener el total de tareas
     const taskCount = await App.contract.contractCount()
     const proposalCount = await App.ProposalContract.proposalCount()
+    console.log('LOG ~ renderTasks: ~ proposalCount', proposalCount)
     const transactionCount = await App.TransactionContract.transactionCount()
     const invoiceCount = await App.InvoiceContract.invoiceCount()
     const $taskTemplate = $('.taskTemplate')
     
     const transactionAddress = await App.TransactionContract.getAddress();
-    console.log('LOG ~ renderTasks: ~ transactionAddress', transactionAddress)
     
       const weiValue = web3.toWei('0.1', 'ether');  
-
-      const proposalCreation = await App.ProposalContract.createProposal(500,"TEST","Weekly",1,1,"20","25","FIXED","0x0b68a1c3147da79C693743dE8811D4410697be48",1,"TEST DEL NUEVo");
-      console.log('LOG ~ renderTasks: ~ proposalCreation', proposalCreation)
-    //  const paymethod = await App.contract.pay(1,transactionAddress, "24/05/2022", "24/05/2022", "0x0BF5F876cc799208247684bB75C553D8330CA9c6", weiValue);
+  //  App.contract.createContract("PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA","PRUEBA",5,"PRUEBA","PRUEBA",1,1,1)
+    const proposalCreation = await App.ProposalContract.createProposal(500,"TEST","Weekly",1,1,"20","25","FIXED","0x9ce88723F967546F4f126f59dEdCC00E5d70eCad",2,"TEST DEL NUEVo");
+      // console.log('LOG ~ renderTasks: ~ proposalCreation', proposalCreation)
+     // const paymethod = await App.contract.pay(1,transactionAddress, "24/05/2022", "24/05/2022", "0x9ce88723F967546F4f126f59dEdCC00E5d70eCad", weiValue);
     
     //   console.log('LOG ~ renderTasks: ~ paymethod', paymethod)
 
 
-    //  const getCpmtract = await App.contract.getContract(1);
-    //  console.log('LOG ~ renderTasks: ~ getCpmtract', getCpmtract[1])
+    const getCpmtract = await App.contract.getContractDetails(2);
+    console.log('LOG ~ renderTasks: ~ getCpmtract', getCpmtract[6].toNumber())
 
 
 for (var i = 1; i <= proposalCount; i++) {
       const propo = await App.ProposalContract.proposals(i);
       console.log('LOG ~ renderTasks: ~ PROPOSALS', propo)
 }
-console.log('LOG ~ renderTasks: ~ transactionCount', transactionCount)
-for (var i = 1; i <= transactionCount; i++) {
-      const xd = await App.TransactionContract.transactions(i);
-      console.log('LOG ~ renderTasks: ~ Transactions', xd)
-}
+// console.log('LOG ~ renderTasks: ~ transactionCount', transactionCount)
+// for (var i = 1; i <= transactionCount; i++) {
+//       const xd = await App.TransactionContract.transactions(i);
+//       console.log('LOG ~ renderTasks: ~ Transactions', xd)
+// }
 // for (var i = 1; i <= invoiceCount; i++) {
 //       const xd = await App.InvoiceContract.invoices(i);
 //       console.log('LOG ~ renderTasks: ~ Invoices', xd)
@@ -121,8 +121,8 @@ for (var i = 1; i <= transactionCount; i++) {
       const task = await App.contract.contracts(i)
       const task2 = await App.contract.contracts_details(i)
 
-      console.log('LOG ~ renderTasks: ~ task', task)
-      console.log('LOG ~ renderTasks: ~ task', task2)
+      // console.log('LOG ~ renderTasks: ~ task', task)
+      // console.log('LOG ~ renderTasks: ~ task', task2)
 
       const taskId = task[0].toNumber()
       const taskContent = task[1]

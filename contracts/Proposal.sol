@@ -3,6 +3,8 @@ pragma solidity >=0.4.22 <0.9.0;
 
 interface ContractSC {
     function setContractStatus(uint256 _id, string calldata status) external;
+
+    function updateContractProposal(uint256 _id, uint256 proposal_id) external;
 }
 
 contract ProposalSC {
@@ -34,8 +36,7 @@ contract ProposalSC {
         string contract_type
     );
 
-    constructor() public {
-    }
+    constructor() public {}
 
     function createProposal(
         int256 payment_rate,
@@ -66,6 +67,7 @@ contract ProposalSC {
         proposals[proposalCount] = proposalInfo;
 
         ContractSC(addr).setContractStatus(contract_id, status);
+        ContractSC(addr).updateContractProposal(contract_id, proposalCount);
 
         emit ProposalCreated(
             proposalCount,

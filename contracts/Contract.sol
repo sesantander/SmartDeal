@@ -229,6 +229,12 @@ contract ContractSC {
         emit ChangedContractStatus(_id, _contract.status);
     }
 
+    function updateContractProposal(uint256 _id, uint256 proposal_id) public {
+        ContractDetails memory _contract_detail = contracts_details[_id];
+        _contract_detail.proposal_id = proposal_id;
+        contracts_details[_id] = _contract_detail;
+    }
+
     function updateContract(
         uint256 _id,
         string memory status,
@@ -240,8 +246,6 @@ contract ContractSC {
         int256 payment_rate
     ) public {
         Contract memory _contract = contracts[_id];
-
-        // Status Validation
 
         _contract.status = status;
         _contract.contract_type = contract_type;
