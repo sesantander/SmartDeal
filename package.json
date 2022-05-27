@@ -1,7 +1,7 @@
 {
-  "name": "labcrypto",
+  "name": "SmartDeal",
   "version": "1.0.0",
-  "description": "Blockchain  To do list",
+  "description": "Blockchain SmartDeal",
   "main": "truffle-config.js",
   "directories": {
     "test": "test"

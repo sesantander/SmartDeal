@@ -89,19 +89,24 @@ App = {
     
     const transactionAddress = await App.TransactionContract.getAddress();
     console.log('LOG ~ renderTasks: ~ transactionAddress', transactionAddress)
+    
+      const weiValue = web3.toWei('0.1', 'ether');  
 
-    const paymethod = await App.contract.pay(1,transactionAddress, "24/05/2022", "24/05/2022");
-    console.log('LOG ~ renderTasks: ~ paymethod', paymethod)
+      const proposalCreation = await App.ProposalContract.createProposal(500,"TEST","Weekly",1,1,"20","25","FIXED","0x0b68a1c3147da79C693743dE8811D4410697be48",1,"TEST DEL NUEVo");
+      console.log('LOG ~ renderTasks: ~ proposalCreation', proposalCreation)
+    //  const paymethod = await App.contract.pay(1,transactionAddress, "24/05/2022", "24/05/2022", "0x0BF5F876cc799208247684bB75C553D8330CA9c6", weiValue);
+    
+    //   console.log('LOG ~ renderTasks: ~ paymethod', paymethod)
 
 
     //  const getCpmtract = await App.contract.getContract(1);
     //  console.log('LOG ~ renderTasks: ~ getCpmtract', getCpmtract[1])
 
 
-// for (var i = 1; i <= proposalCount; i++) {
-//       const propo = await App.ProposalContract.proposals(i);
-//       console.log('LOG ~ renderTasks: ~ PROPOSALS', propo)
-// }
+for (var i = 1; i <= proposalCount; i++) {
+      const propo = await App.ProposalContract.proposals(i);
+      console.log('LOG ~ renderTasks: ~ PROPOSALS', propo)
+}
 console.log('LOG ~ renderTasks: ~ transactionCount', transactionCount)
 for (var i = 1; i <= transactionCount; i++) {
       const xd = await App.TransactionContract.transactions(i);
@@ -145,8 +150,8 @@ for (var i = 1; i <= transactionCount; i++) {
     // Metodo para enviar ether de una cuenta a otra, en este caso enviamos ether a la direccion de el smart contract
     await web3.eth.sendTransaction({
       from: App.account,
-      to: '0x0cda18B7C9952ef4DF502c8D59435B1c3226438F', 
-      value: web3.toWei(201, "ether"), 
+      to: '0x55df007D78Bf8FA2B10a45d2789B5Ce05719fB4f', 
+      value: web3.toWei(5, "ether"), 
     }, async function(err, transactionHash) {
         if (err) { 
             console.log("Error: ",err); 

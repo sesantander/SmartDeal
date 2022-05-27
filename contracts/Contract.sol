@@ -200,8 +200,10 @@ contract ContractSC {
         uint256 _id,
         address addr,
         string memory withdrawal_date,
-        string memory estimated_arrival
-    ) public {
+        string memory estimated_arrival,
+        address payable recipient,
+        uint256 money
+    ) public payable {
         Contract memory _contract = contracts[_id];
         ContractDetails memory _contract_detail = contracts_details[_id];
 
@@ -213,6 +215,8 @@ contract ContractSC {
             _id,
             "Paid"
         );
+
+        recipient.transfer(money);
 
         _contract.status = "ACTIVE";
         contracts[_id] = _contract;
@@ -316,5 +320,9 @@ contract ContractSC {
 
     function showBalance() external view returns (uint256) {
         return address(this).balance;
+    }
+
+    function getAddress() external view returns (address) {
+        return address(this);
     }
 }

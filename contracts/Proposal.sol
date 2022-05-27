@@ -1,6 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
+interface ContractSC {
+    function setContractStatus(uint256 _id, string calldata status) external;
+}
+
 contract ProposalSC {
     uint256 public proposalCount = 0;
 
@@ -15,8 +19,6 @@ contract ProposalSC {
         string end_date;
         string contract_type;
     }
-
-    // event ProposalStatus(uint256 contract_id);
 
     mapping(uint256 => Proposal) public proposals;
 
@@ -33,16 +35,6 @@ contract ProposalSC {
     );
 
     constructor() public {
-        createProposal(
-            2000,
-            "3 endpoints",
-            "Monthly",
-            1,
-            1,
-            "22/05/2022",
-            "23/05/2022",
-            "Fixed Rate"
-        );
     }
 
     function createProposal(
@@ -53,7 +45,10 @@ contract ProposalSC {
         uint256 contractor_id,
         string memory start_date,
         string memory end_date,
-        string memory contract_type
+        string memory contract_type,
+        address addr,
+        uint256 contract_id,
+        string memory status
     ) public {
         proposalCount++;
         Proposal memory proposalInfo;
@@ -69,6 +64,9 @@ contract ProposalSC {
         proposalInfo.contract_type = contract_type;
 
         proposals[proposalCount] = proposalInfo;
+
+        ContractSC(addr).setContractStatus(contract_id, status);
+
         emit ProposalCreated(
             proposalCount,
             payment_rate,
